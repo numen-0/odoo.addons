@@ -1,0 +1,25 @@
+[project]
+name = "odoo-addons"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "numen", email = "iniduen@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+odoo-addons = "odoo_addons:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "odoo-stubs",
+]
+
+[tool.uv.sources]
+odoo-stubs = { git = "https://github.com/odoo-ide/odoo-stubs.git", rev = "18.0" }

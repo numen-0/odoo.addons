@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+  <t t-name="oslo.OsloHome">
+    <div class="o_oslo_home">
+
+      <t t-if="state.loading">
+        <div class="o_oslo_loading">
+          Loading...
+        </div>
+      </t>
+
+      <t t-elif="state.isActive">
+
+        <!-- PANIC VIEW -->
+
+        <div class="o_oslo_view">
+
+          <h1>OSLO</h1>
+
+          <p class="o_oslo_big_text">
+            PANIC
+          </p>
+
+          <p class="o_oslo_label">
+            PRODUCTION DOWN
+          </p>
+
+          <div class="o_oslo_details">
+
+            <div>
+              <span>Started</span>
+              <strong>
+                <t t-esc="state.startedAt"/>
+              </strong>
+            </div>
+
+            <div>
+              <span>Started by</span>
+              <strong>
+                <t t-esc="state.startedBy"/>
+              </strong>
+            </div>
+
+          </div>
+
+          <button
+            class="btn btn-primary o_oslo_end"
+            t-on-click="endOutage"
+          >
+            END OUTAGE
+          </button>
+
+        </div>
+
+      </t>
+
+      <t t-else="">
+
+        <!-- UPTIME VIEW -->
+
+        <div class="o_oslo_view">
+
+          <h1>OSLO</h1>
+
+          <p class="o_oslo_big_text">
+            0
+          </p>
+
+          <p class="o_oslo_label">
+            DAYS SINCE LAST OUTAGE
+          </p>
+
+          <t t-if="state.lastOutageEndedAt">
+            <div class="o_oslo_last_outage">
+              <span>Last outage ended</span>
+              <strong>
+                <t t-esc="state.lastOutageEndedAt"/>
+              </strong>
+            </div>
+          </t>
+
+          <t t-else="">
+            <div class="o_oslo_last_outage">
+              <span>No outages recorded yet.</span>
+            </div>
+          </t>
+
+          <button
+            class="btn btn-danger o_oslo_panic"
+            t-on-click="startOutage"
+          >
+            PANIC BUTTON
+          </button>
+
+        </div>
+
+      </t>
+
+    </div>
+
+  </t>
+
+</templates>

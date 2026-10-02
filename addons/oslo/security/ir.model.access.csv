@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oslo_viewer,oslo.outage.viewer,model_oslo_outage,oslo.group_oslo_viewer,1,0,0,0
+access_oslo_operator,oslo.outage.operator,model_oslo_outage,oslo.group_oslo_operator,1,0,1,0
+access_oslo_manager,oslo.outage.manager,model_oslo_outage,oslo.group_oslo_manager,1,1,1,1

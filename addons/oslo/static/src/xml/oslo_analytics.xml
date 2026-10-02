@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+  <t t-name="oslo.OsloAnalytics">
+
+    <div class="o_oslo_analytics">
+
+      <div class="o_oslo_analytics_header">
+
+        <div>
+          <h1>Reliability Overview</h1>
+          <p>
+            Production availability - 24 hours a day, 7 days a week
+          </p>
+        </div>
+
+        <select
+          class="form-select o_oslo_period"
+          t-att-value="state.days"
+          t-on-change="setPeriod"
+        >
+          <option value="7">7 days</option>
+          <option value="30">30 days</option>
+          <option value="90">90 days</option>
+          <option value="365">12 months</option>
+        </select>
+
+      </div>
+
+      <t t-if="state.loading">
+
+        <div class="o_oslo_loading">
+          Loading reliability data...
+        </div>
+
+      </t>
+
+      <t t-elif="state.data">
+
+        <!-- Metrics -->
+
+        <div class="o_oslo_metrics">
+
+          <div class="o_oslo_metric">
+            <span>Availability</span>
+            <strong>
+              <t t-esc="state.data.availability"/>%
+            </strong>
+          </div>
+
+          <div class="o_oslo_metric">
+            <span>Total downtime</span>
+            <strong>
+              <t t-esc="formatDuration(state.data.total_downtime_seconds)"/>
+            </strong>
+          </div>
+
+          <div class="o_oslo_metric">
+            <span>Incidents</span>
+            <strong>
+              <t t-esc="state.data.outage_count"/>
+            </strong>
+          </div>
+
+          <div class="o_oslo_metric">
+            <span>Mean time to recover</span>
+            <strong>
+              <t t-esc="formatDuration(state.data.mttr_seconds)"/>
+            </strong>
+          </div>
+
+          <div class="o_oslo_metric">
+            <span>Mean time between failures</span>
+            <strong>
+              <t t-esc="formatDuration(state.data.mtbf_seconds)"/>
+            </strong>
+          </div>
+
+        </div>
+
+        <!-- Calendar -->
+
+        <div class="o_oslo_calendar_header">
+          <h2>Daily downtime</h2>
+
+          <p>
+            Hover over a day for outage details.
+          </p>
+        </div>
+
+        <div class="o_oslo_calendar_container">
+
+          <table class="o_oslo_calendar">
+
+            <thead>
+              <tr>
+                <th scope="col">Mon</th>
+                <th scope="col">Tue</th>
+                <th scope="col">Wed</th>
+                <th scope="col">Thu</th>
+                <th scope="col">Fri</th>
+                <th scope="col">Sat</th>
+                <th scope="col">Sun</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <t
+                t-foreach="state.data.calendar"
+                t-as="week"
+                t-key="'week-' + week_index"
+              >
+
+                <tr>
+
+                  <t
+                    t-foreach="week"
+                    t-as="day"
+                    t-key="day.key"
+                  >
+
+                    <td>
+
+                      <t t-if="day.empty">
+                        <div class="o_oslo_calendar_day is-empty"/>
+                      </t>
+
+                      <t t-else="">
+
+                        <div
+                          t-att-class="'o_oslo_calendar_day ' + (
+                            day.downtime_seconds === 0
+                              ? 'is-clean'
+                              : day.downtime_seconds &lt; 3600
+                                ? 'has-minor-outage'
+                                : 'has-major-outage'
+                          )"
+                          t-att-title="
+                            formatDate(day.date)
+                            + ' · '
+                            + day.count
+                            + ' incident(s) · '
+                            + formatDuration(day.downtime_seconds)
+                            + ' downtime'
+                          "
+                        >
+
+                          <span>
+                            <t t-esc="day.day"/>
+                          </span>
+
+                        </div>
+
+                      </t>
+
+                    </td>
+
+                  </t>
+
+                </tr>
+
+              </t>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div class="o_oslo_calendar_legend">
+
+          <span class="o_oslo_legend_item">
+            <span class="o_oslo_legend_box is-clean"/>
+            No downtime
+          </span>
+
+          <span class="o_oslo_legend_item">
+            <span class="o_oslo_legend_box has-minor-outage"/>
+            Under 1 hour
+          </span>
+
+          <span class="o_oslo_legend_item">
+            <span class="o_oslo_legend_box has-major-outage"/>
+            1 hour or more
+          </span>
+
+        </div>
+
+      </t>
+
+    </div>
+
+  </t>
+
+</templates>

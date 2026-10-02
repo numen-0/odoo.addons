@@ -1,0 +1,90 @@
+.o_oslo_home {
+    min-height: 100%;
+    padding: 60px;
+    text-align: center;
+}
+
+/* Shared */
+
+.o_oslo_home h1 {
+    font-size: 48px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.o_oslo_big_text {
+    margin-top: 70px;
+    font-size: 140px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.o_oslo_view {
+    max-width: 700px;
+    margin: 60px auto;
+}
+
+.o_oslo_label {
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: #666;
+}
+
+/* Uptime */
+
+.o_oslo_last_outage {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.o_oslo_last_outage span {
+    color: #777;
+}
+
+.o_oslo_last_outage strong {
+    font-size: 20px;
+}
+
+.o_oslo_panic {
+    margin-top: 50px;
+    padding: 15px 40px;
+    font-size: 18px;
+}
+
+/* Panic */
+
+.o_oslo_panic_timer {
+    margin-top: 15px;
+    font-size: 140px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.o_oslo_details {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.o_oslo_details > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.o_oslo_details span {
+    color: #777;
+}
+
+.o_oslo_details strong {
+    font-size: 20px;
+}
+
+.o_oslo_end {
+    margin-top: 50px;
+    padding: 15px 40px;
+    font-size: 18px;
+}

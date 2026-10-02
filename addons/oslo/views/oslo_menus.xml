@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- Root -->
+
+  <menuitem
+    id="menu_oslo_root"
+    name="Oslo"
+    sequence="10"
+  />
+
+  <!-- Home -->
+
+  <menuitem
+    id="menu_oslo_home"
+    name="Home"
+    parent="menu_oslo_root"
+    sequence="10"
+    action="action_oslo_home"
+  />
+
+  <!-- Analytics -->
+
+  <menuitem
+    id="menu_oslo_analytics"
+    name="Reliability Overview"
+    parent="menu_oslo_root"
+    action="action_oslo_analytics"
+    sequence="15"
+  />
+
+  <!-- Registry -->
+
+  <menuitem
+    id="menu_oslo_registry"
+    name="Outage History"
+    parent="menu_oslo_root"
+    sequence="20"
+    action="action_oslo_outages"
+  />
+
+</odoo>

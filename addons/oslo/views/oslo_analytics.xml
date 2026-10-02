@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_oslo_analytics" model="ir.actions.client">
+        <field name="name">Reliability Overview</field>
+        <field name="tag">oslo_analytics</field>
+    </record>
+
+</odoo>

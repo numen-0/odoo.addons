@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- Outage List -->
+
+  <record id="view_oslo_outage_list" model="ir.ui.view">
+    <field name="name">oslo.outage.list</field>
+    <field name="model">oslo.outage</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="started_at"/>
+        <field name="ended_at"/>
+        <field name="started_by"/>
+        <field name="ended_by"/>
+        <field name="description"/>
+        <field name="is_active"/>
+      </list>
+    </field>
+  </record>
+
+
+  <!-- Outage Form -->
+
+  <record id="view_oslo_outage_form" model="ir.ui.view">
+    <field name="name">oslo.outage.form</field>
+    <field name="model">oslo.outage</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <group>
+              <field name="description"/>
+              <field name="is_active"/>
+            </group>
+
+            <group>
+              <field name="started_at"/>
+              <field name="started_by"/>
+              <field name="ended_at"/>
+              <field name="ended_by"/>
+            </group>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+
+  <!-- Outage Timeline -->
+
+  <!-- TODO: use a calendar -->
+
+  <!-- Registry Action -->
+
+  <record id="action_oslo_outages" model="ir.actions.act_window">
+    <field name="name">Outage History</field>
+    <field name="res_model">oslo.outage</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+</odoo>

@@ -1,0 +1,23 @@
+version = 1
+revision = 3
+requires-python = ">=3.12"
+
+[[package]]
+name = "odoo-addons"
+version = "0.1.0"
+source = { editable = "." }
+
+[package.dev-dependencies]
+dev = [
+    { name = "odoo-stubs" },
+]
+
+[package.metadata]
+
+[package.metadata.requires-dev]
+dev = [{ name = "odoo-stubs", git = "https://github.com/odoo-ide/odoo-stubs.git?rev=18.0" }]
+
+[[package]]
+name = "odoo-stubs"
+version = "0.0.1"
+source = { git = "https://github.com/odoo-ide/odoo-stubs.git?rev=18.0#42721108764770867e3ba6e75d56f759870db903" }

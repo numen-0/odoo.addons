@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="group_oslo_viewer" model="res.groups">
+        <field name="name">Oslo Viewer</field>
+    </record>
+
+    <record id="group_oslo_operator" model="res.groups">
+        <field name="name">Oslo Operator</field>
+    </record>
+
+    <record id="group_oslo_manager" model="res.groups">
+        <field name="name">Oslo Manager</field>
+    </record>
+
+</odoo>
